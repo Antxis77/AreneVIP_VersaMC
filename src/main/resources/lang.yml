@@ -10,3 +10,6 @@ no-allow: '&cVous n''avez pas la permission !'
 player-join-event: '&2[+] &9{teams} {player} &avient de se connecter !'
 player-leave-event: '&4[-] &9{teams} {player} &cvient de se déconnecter !'
 msg-format: '&9{teams} {player} &f: &7'
+
+admin-perm: 'arenevip.admin'
+joueur-perm: 'arenevip.joueur'

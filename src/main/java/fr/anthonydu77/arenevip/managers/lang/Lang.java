@@ -26,6 +26,9 @@ public enum Lang {
     PLAYER_JOIN_EVENT,
     PLAYER_LEAVE_EVENT,
 
+    ADMIN_PERM,
+    JOUEUR_PERM,
+
     EMPTY;
 
     private static final Map<Lang, String> VALUES = new HashMap<>();

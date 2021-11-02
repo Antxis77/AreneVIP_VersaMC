@@ -3,6 +3,7 @@ name: Arene VIP
 description: Plugin d'Arene VIP
 author: Anthonydu77
 version: 0.0.1
+depend: [VersaAPI]
 
 commands:
   plversion:

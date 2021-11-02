@@ -11,6 +11,9 @@ repositories {
     maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
     maven { url = 'https://oss.sonatype.org/content/repositories/central' }
 
+    maven { url 'https://s01.oss.sonatype.org/content/repositories/snapshots/' }
+    maven { url 'https://repo.citizensnpcs.co/' }
+
     maven {
         url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
 
@@ -29,6 +32,10 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
 
     compileOnly 'org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT'
+
+    implementation 'io.rqndomhax:versa-api:1.0-SNAPSHOT:all'
+
+    compileOnly 'net.citizensnpcs:citizensapi:2.0.27-SNAPSHOT'
 }
 
 test {
