@@ -1,0 +1,26 @@
+main: fr.anthonydu77.arenevip.Main
+name: Arene VIP
+description: Plugin d'Arene VIP
+author: Anthonydu77
+version: 0.0.1
+
+commands:
+  plversion:
+    description: See plugin version
+    aliases: #No aliases
+    permission: template.admin
+
+  plname:
+    description: See plugin name
+    aliases: #No aliases
+    permission: template.admin
+
+  pldescription:
+    description: See plugin description
+    aliases: #No aliases
+    permission: template.admin
+
+  plauthors:
+    description: See plugin authors
+    aliases: #No aliases
+    permission: template.admin

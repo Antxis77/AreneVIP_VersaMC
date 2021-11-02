@@ -1,0 +1,12 @@
+#######       EssentialAdmin       #######
+empty: ' '
+serveur-name: '&cTemplate &7» &r'
+serveur-name-console: 'Template » '
+contact-admin: '&c/! Veuillez contacter un Administrateur /!'
+mod-to-console: 'Seul un joueur peux executer cette commande !'
+no-permission: '&cVous n''avez pas la permission !'
+no-game: '&cCette commande n''est pas activée pour le moment !'
+no-allow: '&cVous n''avez pas la permission !'
+player-join-event: '&2[+] &9{teams} {player} &avient de se connecter !'
+player-leave-event: '&4[-] &9{teams} {player} &cvient de se déconnecter !'
+msg-format: '&9{teams} {player} &f: &7'
