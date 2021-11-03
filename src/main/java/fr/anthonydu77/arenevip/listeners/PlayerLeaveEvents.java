@@ -12,7 +12,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
  * Created by Anthonydu77 30/07/2021 inside the package - fr.anthonydu77.template.listeners
  */
 
-public class PlayerLeaveEvent implements Listener {
+public class PlayerLeaveEvents implements Listener {
 
     final private Main instance = Main.getInstance();
 

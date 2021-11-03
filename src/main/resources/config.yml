@@ -1,6 +1,31 @@
-world: 'world'
-x: 0
-y: 0
-z: 0
-yaw: 0
-pitch: 0
+#NPC POS#
+npc_world: 'world'
+npc_x: -3
+npc_y: 49
+npc_z: -10
+npc_yaw: -137
+npc_pitch: 0
+
+#SPAWN POS#
+spawn_world: 'world'
+spawn_x: 1
+spawn_y: 50
+spawn_z: -18
+
+#ENTRY ARENE POS#
+arene_world: 'world'
+arene_x: 0
+arene_y: 44
+arene_z: 2
+
+#ENTRY top POS#
+arene_top_world: 'world'
+arene_top_x: 0
+arene_top_y: 44
+arene_top_z: 2
+
+#ENTRY bottom POS#
+arene_bottom_world: 'world'
+arene_bottom_x: 0
+arene_bottom_y: 44
+arene_bottom_z: 2

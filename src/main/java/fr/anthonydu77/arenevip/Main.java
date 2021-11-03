@@ -1,16 +1,18 @@
 package fr.anthonydu77.arenevip;
 
 import fr.anthonydu77.arenevip.commands.PluginInfoCommands;
-import fr.anthonydu77.arenevip.listeners.PlayerJoinEvents;
-import fr.anthonydu77.arenevip.listeners.PlayerLeaveEvent;
+import fr.anthonydu77.arenevip.listeners.PlayerClickEvents;
+import fr.anthonydu77.arenevip.listeners.PlayerDeadEvents;
+import fr.anthonydu77.arenevip.listeners.PlayerLeaveEvents;
 import fr.anthonydu77.arenevip.managers.YmlFile;
+import fr.anthonydu77.arenevip.managers.classutils.Cuboid;
+import fr.anthonydu77.arenevip.managers.classutils.PlayerManager;
 import fr.anthonydu77.arenevip.managers.config.PluginSettings;
 import io.rqndomhax.GetVersaAPI;
 import io.rqndomhax.VersaAPI;
 import net.citizensnpcs.api.CitizensAPI;
 import net.citizensnpcs.api.npc.NPC;
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
+import org.bukkit.*;
 import org.bukkit.entity.EntityType;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -33,7 +35,8 @@ public class Main extends JavaPlugin {
 
     private static Main instance;
     private static PluginSettings pluginSettings;
-    VersaAPI api;
+    private static VersaAPI api;
+    private static PlayerManager playerManager;
     private NPC arene;
     private static final Logger log = Logger.getLogger("Minecraft");
 
@@ -43,6 +46,8 @@ public class Main extends JavaPlugin {
     public static PluginSettings getPLuginSetting() {
         return pluginSettings;
     }
+    public static VersaAPI getAPI() { return api;}
+    public static PlayerManager getPlayerManager() { return playerManager;}
     public static String getLog_Prefix() {
         return "[Arene VIP] - ";
     }
@@ -62,8 +67,7 @@ public class Main extends JavaPlugin {
         regsiterCommands();
         registerAPI();
         setupNPC();
-
-
+        setupWorld();
 
         log.info(getLog_Prefix() + getDescription().getName() + " status is ready");
         log.info(getLog_Prefix() + "---------- " + getDescription().getFullName() + " ----------");
@@ -84,15 +88,16 @@ public class Main extends JavaPlugin {
 
     private void setupNPC() {
         //JoinArene
-        arene = CitizensAPI.getNPCRegistry().createNPC(EntityType.PLAYER, UUID.randomUUID(), 0, "&eAgricultures");
-        arene.data().set(NPC.PLAYER_SKIN_UUID_METADATA, "Anthonydu77");
+        arene = CitizensAPI.getNPCRegistry().createNPC(EntityType.PLAYER, UUID.randomUUID(), 0, "&eMaitre Gladiateur");
+        arene.data().set(NPC.PLAYER_SKIN_UUID_METADATA, "moansx");
         arene.data().set(NPC.PLAYER_SKIN_USE_LATEST, false);
-        Location npcAgricultureLoc = new Location(Bukkit.getWorld(pluginSettings.getWorld()),
-                pluginSettings.getX(), pluginSettings.getY(), pluginSettings.getZ(), pluginSettings.getYaw(), pluginSettings.getPitch());
+        Location npcAgricultureLoc = new Location(Bukkit.getWorld(pluginSettings.getNpc_world()),
+                pluginSettings.getNpc_x(), pluginSettings.getNpc_y(), pluginSettings.getNpc_z(), pluginSettings.getNpc_yaw(), pluginSettings.getNpc_pitch());
         arene.spawn(npcAgricultureLoc);
     }
 
     private void registerAPI() {
+
         GetVersaAPI getApi = (GetVersaAPI) Bukkit.getServicesManager().load(GetVersaAPI.class); // We're getting the API
         if (getApi == null) {    // If the API couldn't be found we'll stop the plugin
             onDisable();
@@ -103,10 +108,31 @@ public class Main extends JavaPlugin {
         log.info(getLog_Prefix() + "Register API is done !");
     }
 
+    private void setupWorld() {
+        World world = Bukkit.getWorld("world");
+        world.setGameRuleValue("doDaylightCycle", "false");
+        world.setGameRuleValue("doWeatherCycle", "false");
+        world.setGameRuleValue("doMobSpawning", "false");
+        world.setGameRuleValue("doFireTick", "false");
+        world.setGameRuleValue("keepInventory", "false");
+        world.setGameRuleValue("showDeathMessages", "false");
+        world.setGameRuleValue("spawnRadius", "1");
+        world.setDifficulty(Difficulty.PEACEFUL);
+        world.setTime(1000);
+
+        Location toparene = new Location(world, pluginSettings.getArene_top_x(), pluginSettings.getArene_top_y(), pluginSettings.getArene_top_z());
+        Location bottomarene = new Location(world, pluginSettings.getArene_bottom_x(), pluginSettings.getArene_bottom_y(), pluginSettings.getArene_bottom_z());
+
+        Cuboid cuboid = new Cuboid(toparene, bottomarene);
+
+    }
+
     private void registerEvents() {
         PluginManager pm = Bukkit.getPluginManager();
-        pm.registerEvents(new PlayerJoinEvents(), this);
-        pm.registerEvents(new PlayerLeaveEvent(), this);
+        pm.registerEvents(new PlayerClickEvents(), this);
+        pm.registerEvents(new PlayerDeadEvents(), this);
+        pm.registerEvents(new PlayerLeaveEvents(), this);
+        pm.registerEvents(new PlayerLeaveEvents(), this);
         log.info(getLog_Prefix() + "Register Events is done !");
     }
 

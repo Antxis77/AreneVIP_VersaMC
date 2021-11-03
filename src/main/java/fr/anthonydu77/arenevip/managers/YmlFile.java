@@ -1,6 +1,7 @@
 package fr.anthonydu77.arenevip.managers;
 
 import fr.anthonydu77.arenevip.Main;
+import fr.anthonydu77.arenevip.managers.config.PluginSettings;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -17,6 +18,11 @@ public enum YmlFile {
 
     private final String fileName;
     private final File dataFolder;
+
+    private static YmlFile ymlFile;
+    public static YmlFile getYmlFile() {
+        return ymlFile;
+    }
 
     YmlFile(String fileName) {
         this.fileName = fileName;

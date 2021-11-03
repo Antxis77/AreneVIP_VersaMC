@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/VersaMC_AreneVIP.iml" filepath="$PROJECT_DIR$/.idea/modules/VersaMC_AreneVIP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/VersaMC_AreneVIP.main.iml" filepath="$PROJECT_DIR$/.idea/modules/VersaMC_AreneVIP.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/VersaMC_AreneVIP.test.iml" filepath="$PROJECT_DIR$/.idea/modules/VersaMC_AreneVIP.test.iml" />
+    </modules>
+  </component>
+</project>
