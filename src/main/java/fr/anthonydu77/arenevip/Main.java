@@ -1,9 +1,7 @@
 package fr.anthonydu77.arenevip;
 
 import fr.anthonydu77.arenevip.commands.PluginInfoCommands;
-import fr.anthonydu77.arenevip.listeners.PlayerClickEvents;
-import fr.anthonydu77.arenevip.listeners.PlayerDeadEvents;
-import fr.anthonydu77.arenevip.listeners.PlayerLeaveEvents;
+import fr.anthonydu77.arenevip.listeners.*;
 import fr.anthonydu77.arenevip.managers.YmlFile;
 import fr.anthonydu77.arenevip.managers.classutils.Cuboid;
 import fr.anthonydu77.arenevip.managers.classutils.PlayerManager;
@@ -65,7 +63,7 @@ public class Main extends JavaPlugin {
         registerYamls();
         registerEvents();
         regsiterCommands();
-        registerAPI();
+        //registerAPI();
         setupNPC();
         setupWorld();
 
@@ -110,29 +108,17 @@ public class Main extends JavaPlugin {
 
     private void setupWorld() {
         World world = Bukkit.getWorld("world");
-        world.setGameRuleValue("doDaylightCycle", "false");
-        world.setGameRuleValue("doWeatherCycle", "false");
-        world.setGameRuleValue("doMobSpawning", "false");
-        world.setGameRuleValue("doFireTick", "false");
-        world.setGameRuleValue("keepInventory", "false");
-        world.setGameRuleValue("showDeathMessages", "false");
-        world.setGameRuleValue("spawnRadius", "1");
         world.setDifficulty(Difficulty.PEACEFUL);
-        world.setTime(1000);
-
-        Location toparene = new Location(world, pluginSettings.getArene_top_x(), pluginSettings.getArene_top_y(), pluginSettings.getArene_top_z());
-        Location bottomarene = new Location(world, pluginSettings.getArene_bottom_x(), pluginSettings.getArene_bottom_y(), pluginSettings.getArene_bottom_z());
-
-        Cuboid cuboid = new Cuboid(toparene, bottomarene);
-
     }
 
     private void registerEvents() {
         PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(new PlayerClickEvents(), this);
         pm.registerEvents(new PlayerDeadEvents(), this);
+        pm.registerEvents(new PlayerJoinEvents(), this);
         pm.registerEvents(new PlayerLeaveEvents(), this);
-        pm.registerEvents(new PlayerLeaveEvents(), this);
+        pm.registerEvents(new PlayerModCancelledEvents(), this);
+        pm.registerEvents(new PlayerMoveEvents(), this);
         log.info(getLog_Prefix() + "Register Events is done !");
     }
 

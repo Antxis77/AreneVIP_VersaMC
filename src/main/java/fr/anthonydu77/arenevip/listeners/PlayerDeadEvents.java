@@ -20,7 +20,6 @@ public class PlayerDeadEvents implements Listener {
     @EventHandler
     public void onRevive(PlayerRespawnEvent e) {
         Player player = e.getPlayer();
-        player.teleport(new Location(player.getWorld(), settings.getSpawn_x(), settings.getSpawn_y(), settings.getSpawn_z()));
-    }
 
+    }
 }

@@ -20,12 +20,12 @@ arene_z: 2
 
 #ENTRY top POS#
 arene_top_world: 'world'
-arene_top_x: 0
-arene_top_y: 44
-arene_top_z: 2
+arene_top_x: 10
+arene_top_y: 48
+arene_top_z: -6
 
 #ENTRY bottom POS#
 arene_bottom_world: 'world'
-arene_bottom_x: 0
-arene_bottom_y: 44
-arene_bottom_z: 2
+arene_bottom_x: -8
+arene_bottom_y: 43
+arene_bottom_z: 9

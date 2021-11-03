@@ -10,7 +10,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerTeleportEvent;
 
 /**
  * Created by Anthonydu77 30/07/2021 inside the package - fr.anthonydu77.template.listeners
@@ -30,7 +29,7 @@ public class PlayerJoinEvents implements Listener {
         player.setFlying(false);
         player.setHealth(20);
         player.setFoodLevel(20);
-        player.setWalkSpeed(1f);
+        player.getInventory().clear();
 
         player.teleport(new Location(player.getWorld(), settings.getSpawn_x(), settings.getSpawn_y(), settings.getSpawn_z()));
 
