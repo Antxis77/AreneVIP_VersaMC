@@ -6,6 +6,7 @@ package fr.anthonydu77.arenevip.managers.lang;
 
 public enum LangValue {
     PLAYER("player"),
+    KILLER("killer"),
     AMOUNT("amount"),
     PRICE("price");
 

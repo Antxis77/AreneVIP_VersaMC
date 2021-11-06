@@ -63,7 +63,7 @@ public class Main extends JavaPlugin {
         registerYamls();
         registerEvents();
         regsiterCommands();
-        //registerAPI();
+        registerAPI();
         setupNPC();
         setupWorld();
 

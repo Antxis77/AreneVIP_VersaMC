@@ -26,6 +26,9 @@ public enum Lang {
     PLAYER_JOIN_EVENT,
     PLAYER_LEAVE_EVENT,
 
+    PLAYER_DEAD_EVENT,
+    PLAYER_KILL_EVENT,
+
     ADMIN_PERM,
     JOUEUR_PERM,
 
