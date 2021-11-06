@@ -3,15 +3,16 @@ package fr.anthonydu77.arenevip;
 import fr.anthonydu77.arenevip.commands.PluginInfoCommands;
 import fr.anthonydu77.arenevip.listeners.*;
 import fr.anthonydu77.arenevip.managers.YmlFile;
-import fr.anthonydu77.arenevip.managers.classutils.Cuboid;
 import fr.anthonydu77.arenevip.managers.classutils.PlayerManager;
 import fr.anthonydu77.arenevip.managers.config.PluginSettings;
+import fr.mrmicky.fastboard.FastBoard;
 import io.rqndomhax.GetVersaAPI;
 import io.rqndomhax.VersaAPI;
 import net.citizensnpcs.api.CitizensAPI;
 import net.citizensnpcs.api.npc.NPC;
 import org.bukkit.*;
 import org.bukkit.entity.EntityType;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.yaml.snakeyaml.Yaml;
@@ -29,7 +30,7 @@ import java.util.logging.Logger;
  * Created by Anthonydu77 30/07/2021 inside the package - fr.anthonydu77.arenevip
  */
 
-public class Main extends JavaPlugin {
+public class Main extends JavaPlugin implements Listener {
 
     private static Main instance;
     private static PluginSettings pluginSettings;
@@ -103,6 +104,12 @@ public class Main extends JavaPlugin {
         }
         api = getApi.getAPI();    // We're saving the api for later use
 
+        getServer().getScheduler().runTaskTimer(this, () -> {
+            for (FastBoard board : PlayerJoinLeaveEvent.boards.values()) {
+                updateBoard(board);
+            }
+        }, 0, 20);
+
         log.info(getLog_Prefix() + "Register API is done !");
     }
 
@@ -115,8 +122,7 @@ public class Main extends JavaPlugin {
         PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(new PlayerClickEvents(), this);
         pm.registerEvents(new PlayerDeadEvents(), this);
-        pm.registerEvents(new PlayerJoinEvents(), this);
-        pm.registerEvents(new PlayerLeaveEvents(), this);
+        pm.registerEvents(new PlayerJoinLeaveEvent(), this);
         pm.registerEvents(new PlayerModCancelledEvents(), this);
         pm.registerEvents(new PlayerMoveEvents(), this);
         log.info(getLog_Prefix() + "Register Events is done !");
@@ -152,6 +158,19 @@ public class Main extends JavaPlugin {
             e.printStackTrace();
         }
         return null;
+    }
+
+    private void updateBoard(FastBoard board) {
+        board.updateLines("§9");
+        board.updateLines("§9§lMon Profil");
+        board.updateLines("§8➤ §fRank : §e" + Main.getAPI().getUserManager().getUser(board.getPlayer()).getInfos().getObject("ranks"));
+        board.updateLines("§8➤ §fPièce : §e" + Main.getAPI().getUserManager().getUser(board.getPlayer()).getInfos().getObject("coins") +" ⛃");
+        board.updateLines("§e");
+        board.updateLines("§9§lServeur");
+        board.updateLines("§8➤ §fJoueurs : §e" + Bukkit.getOnlinePlayers().size());
+        board.updateLines("§8➤ §fLobby : §e#1");
+        board.updateLines("§1");
+        board.updateLines(ChatColor.GOLD + "play.versamc.fr");
     }
 }
 

@@ -12,6 +12,7 @@
     <orderEntry type="library" scope="PROVIDED" name="Gradle: org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: net.citizensnpcs:citizensapi:2.0.27-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Gradle: io.rqndomhax:versa-api:all:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Gradle: fr.mrmicky:fastboard:1.2.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: commons-lang:commons-lang:2.6" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: com.googlecode.json-simple:json-simple:1.1.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: net.md-5:bungeecord-chat:1.8-SNAPSHOT" level="project" />
