@@ -1,6 +1,6 @@
 package fr.anthonydu77.arenevip.listeners;
 
-import fr.anthonydu77.arenevip.Main;
+import fr.anthonydu77.arenevip.managers.Setup;
 import fr.anthonydu77.arenevip.managers.config.PluginSettings;
 import io.rqndomhax.utils.ItemBuilder;
 import net.citizensnpcs.api.event.NPCRightClickEvent;
@@ -17,8 +17,7 @@ import org.bukkit.event.Listener;
 
 public class PlayerClickEvents implements Listener {
 
-    final private Main instance = Main.getInstance();
-    final private PluginSettings settings = Main.getPLuginSetting();
+    final private PluginSettings settings = Setup.getPLuginSetting();
 
     @EventHandler
     public void onClickEvent(NPCRightClickEvent e) {

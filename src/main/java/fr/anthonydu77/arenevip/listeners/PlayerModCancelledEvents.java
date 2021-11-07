@@ -1,19 +1,14 @@
 package fr.anthonydu77.arenevip.listeners;
 
-import fr.anthonydu77.arenevip.Main;
+import fr.anthonydu77.arenevip.managers.Setup;
 import fr.anthonydu77.arenevip.managers.config.PluginSettings;
-import io.rqndomhax.utils.ItemBuilder;
 import org.apache.commons.lang.math.IntRange;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
-import org.bukkit.event.player.PlayerItemDamageEvent;
 
 /**
  * Created by Anthonydu77 03/11/2021 inside the package - fr.anthonydu77.arenevip.listeners
@@ -21,8 +16,7 @@ import org.bukkit.event.player.PlayerItemDamageEvent;
 
 public class PlayerModCancelledEvents implements Listener {
 
-    final private Main instance = Main.getInstance();
-    final private PluginSettings settings = Main.getPLuginSetting();
+    final private PluginSettings settings = Setup.getPLuginSetting();
 
     @EventHandler
     public void onAttack(EntityDamageEvent e) {
@@ -42,5 +36,4 @@ public class PlayerModCancelledEvents implements Listener {
                 && new IntRange(l1.getY(), l2.getY()).containsDouble(origin.getY())
                 &&  new IntRange(l1.getZ(), l2.getZ()).containsDouble(origin.getZ());
     }
-
 }

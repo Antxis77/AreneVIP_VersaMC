@@ -1,7 +1,7 @@
 package fr.anthonydu77.arenevip.listeners;
 
 import fr.anthonydu77.arenevip.Main;
-import fr.anthonydu77.arenevip.managers.classutils.Cuboid;
+import fr.anthonydu77.arenevip.managers.Setup;
 import fr.anthonydu77.arenevip.managers.config.PluginSettings;
 import fr.mrmicky.fastboard.FastBoard;
 import org.bukkit.Bukkit;
@@ -26,7 +26,7 @@ public class PlayerJoinLeaveEvent implements Listener {
 
     final private Main instance = Main.getInstance();
     public static final Map<UUID, FastBoard> boards = new HashMap<>();
-    final private PluginSettings settings = Main.getPLuginSetting();
+    final private PluginSettings settings = Setup.getPLuginSetting();
 
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
@@ -43,8 +43,8 @@ public class PlayerJoinLeaveEvent implements Listener {
 
         objectiveSign.updateTitle("§9");
         objectiveSign.updateTitle("§9§lMon Profil");
-        objectiveSign.updateTitle("§8➤ §fRank : §e" + Main.getAPI().getUserManager().getUser(player).getInfos().getObject("ranks"));
-        objectiveSign.updateTitle("§8➤ §fPièce : §e" + Main.getAPI().getUserManager().getUser(player).getInfos().getObject("coins") +" ⛃");
+        objectiveSign.updateTitle("§8➤ §fRank : §e" + Setup.getAPI().getUserManager().getUser(player).getInfos().getObject("ranks"));
+        objectiveSign.updateTitle("§8➤ §fPièce : §e" + Setup.getAPI().getUserManager().getUser(player).getInfos().getObject("coins") +" ⛃");
         objectiveSign.updateTitle("§e");
         objectiveSign.updateTitle("§9§lServeur");
         objectiveSign.updateTitle("§8➤ §fJoueurs : §e" + Bukkit.getOnlinePlayers().size());
@@ -54,7 +54,6 @@ public class PlayerJoinLeaveEvent implements Listener {
         objectiveSign.updateLines();
 
         this.boards.put(player.getUniqueId(), objectiveSign);
-
 
         player.teleport(new Location(player.getWorld(), settings.getSpawn_x(), settings.getSpawn_y(), settings.getSpawn_z()));
 
